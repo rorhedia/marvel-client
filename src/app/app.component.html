@@ -1,16 +1,24 @@
-<mat-toolbar class="mat-elevation-z10" color="" fxLayout="row">
+<mat-toolbar class="mat-elevation-z10 mb-6" color="" fxLayout="row">
   <div>
-    <a class="valign-center" mat-icon-button [routerLink]="['']">
+    <a class="valign-center" [routerLink]="['/']">
       <mat-icon>home</mat-icon>
     </a>
   </div>
-  <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-start" fxHide.xs class="mx-8">
     <ul fxLayout fxLayoutGap="20px" class="menu-items">
       <li><a [routerLink]="['/comics']">Comics</a></li>
+      <li><a [routerLink]="['/comics']">Películas</a></li>
     </ul>
   </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs class="mx-8">
+    <ul fxLayout fxLayoutGap="20px" class="menu-items">
+      <li><a [routerLink]="['/comics']">Iniciar sesión</a></li>
+    </ul>
+  </div>
+
+  <!-- Mobile -->
   <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.gt-xs>
-    <a class="valign-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="additional links">
+    <a class="valign-center" [matMenuTriggerFor]="menu" aria-label="additional links">
       <mat-icon>more_vert</mat-icon>
     </a>
     <mat-menu #menu="matMenu">
