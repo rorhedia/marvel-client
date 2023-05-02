@@ -1,15 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {filter, map} from "rxjs";
-import {data} from "autoprefixer";
+import {HttpClient} from '@angular/common/http';
+import {map} from "rxjs";
 
-interface comicResponse {
-  attributionHTML: string;
-  attributionText: string;
-  copyright: string;
-  data: any;
+import {ComicsResponse} from '../interfaces/comicResponse.interface';
 
-}
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +14,7 @@ export class ComicsService {
   }
 
   getComics() {
-    return this.http.get<comicResponse>(`http://localhost:3000/api/v1/comics`)
+    return this.http.get<ComicsResponse>(`http://localhost:3000/api/v1/comics`)
       .pipe(map(res => res.data.results));
   }
 }
