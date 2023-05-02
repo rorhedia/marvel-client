@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {ComicsService} from "../../services/comics.service";
+import {Comic} from "../../interfaces/comics.interface";
 
 @Component({
   selector: 'app-comics',
@@ -8,12 +10,14 @@ import {ComicsService} from "../../services/comics.service";
 })
 export class ComicsComponent implements OnInit {
 
-  constructor(private comics: ComicsService) {
+  comics: Array<Comic> = []
+
+  constructor(private comicsService: ComicsService) {
   }
 
   ngOnInit() {
-    this.comics.getComics().subscribe(res => {
-      console.log(res);
+    this.comicsService.getComics().subscribe(res => {
+      this.comics = res;
     })
   }
 }
