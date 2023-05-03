@@ -1,14 +1,21 @@
 <div class="container">
+  <form class="w-full" [formGroup]="comicForm">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Buscar por título</mat-label>
+      <input class="w-full" matInput type="text" formControlName="title">
+    </mat-form-field>
+  </form>
+
   <div class="columns-1 columns-xs gap-y-40 gap-x-12">
     <div *ngFor="let comic of comics" class="mt-4 max-w-lg">
       <a routerLink="/{{comic.id}}">
-        <mat-card class="example-card">
+        <mat-card>
           <mat-card-header>
-            <mat-card-title class="font-bold	text-slate-50">{{comic.title}}</mat-card-title>
+            <mat-card-title class="font-bold text-slate-50">{{comic.title}}</mat-card-title>
             <mat-card-subtitle>{{comic.variantDescription}}</mat-card-subtitle>
           </mat-card-header>
-          <img class="" mat-card-image src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}"
-               alt="Photo of a Shiba Inu">
+          <img mat-card-image alt="{{comic.title}}"
+               src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}">
         </mat-card>
       </a>
     </div>
