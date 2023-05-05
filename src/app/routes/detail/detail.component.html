@@ -1,0 +1,21 @@
+<div class="flex justify-center">
+  <div class="md:flex p-10 rounded w-11/12 md:w-9/12 lg:w-1/2 h-96 bg-gray-500 h-min">
+
+    <div class="h-full flex justify-center w-full md:w-1/2 p-2">
+      <img class="h-full" src="{{data.images[0].path}}.{{data.images[0].extension}}" alt="">
+    </div>
+
+    <div class="w-full md:w-1/2 p-2">
+      <p class="text-xl mb-14 text-white">{{data.title}}</p>
+      <p class="text-xl mb-14 text-white">{{data.description || "We can't find a description :("}}</p>
+      <div class="flex justify-end">
+        <button type="button"
+                class="px-5 bg-lime-500 rounded text-lime-900 font-black"
+                (click)="handlerMessage()">
+          {{buyMessage}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
