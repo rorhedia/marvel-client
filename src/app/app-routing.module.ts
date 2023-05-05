@@ -1,10 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./routes/home/home.component";
 import {ComicsComponent} from "./routes/comics/comics.component";
+import {CharactersComponent} from "./routes/characters/characters.component";
+import {DetailComponent} from "./routes/detail/detail.component";
 
 const routes: Routes = [
-  {path: 'comics', component: ComicsComponent}
+  {
+    path: 'comics',
+    component: ComicsComponent
+  },
+  {path: 'personajes', component: CharactersComponent},
+  {path: "detail/:id", component: DetailComponent},
+  {path: "**", redirectTo: "/"}
 ];
 
 @NgModule({
@@ -12,4 +19,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
+
 }

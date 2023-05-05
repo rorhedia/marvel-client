@@ -12,12 +12,16 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MaterialModule} from '../material.module';
 import {ComicsComponent} from './routes/comics/comics.component';
+import { DetailComponent } from './routes/detail/detail.component';
+import { CharactersComponent } from './routes/characters/characters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ComicsComponent
+    ComicsComponent,
+    DetailComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,

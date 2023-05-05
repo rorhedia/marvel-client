@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-
-import {ComicsService} from "../../services/comics.service";
-import {Comic} from "../../interfaces/comics.interface";
 import {debounceTime, switchMap, tap} from "rxjs";
+
+import {ComicsService} from "@services/comics.service";
+import {Comic} from "@interfaces/comics.interface";
 
 @Component({
   selector: 'app-comics',
@@ -17,27 +17,34 @@ export class ComicsComponent implements OnInit {
   comicForm = this.fb.group({
     title: ['']
   })
+  spinner: boolean = true;
 
-  constructor(private comicsService: ComicsService, private fb: FormBuilder) {
+
+  constructor(
+    private comicsService: ComicsService,
+    private fb: FormBuilder
+  ) {
   }
 
   ngOnInit() {
     this.comicsService.getComics().subscribe(comics => {
       this.comics = comics
+      this.spinner = false;
     });
 
     this.comicForm.valueChanges.pipe(
       debounceTime(300),
-      tap((title) => {
-        // @ts-ignore
-        if (title && title.length === 0) title = '';
-        return {title, offset: this.offset}
-      }),
-      switchMap(val => this.comicsService.searchComics(val))
+      tap(title => ({title, offset: this.offset})),
+      switchMap(val => {
+        this.comics = [];
+        this.spinner = true;
+        return this.comicsService.searchComics(val);
+      })
     ).subscribe(comics => {
-      console.log(comics);
       this.comics = comics;
+      this.spinner = false;
     });
 
   }
+
 }
