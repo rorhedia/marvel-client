@@ -13,6 +13,11 @@ export class DetailComponent implements OnInit {
 
   data: Comic | any = {};
   buyMessage: string = '';
+  comic = {
+    title: '',
+    description: '',
+    image: ''
+  }
 
 
   constructor(
@@ -27,6 +32,11 @@ export class DetailComponent implements OnInit {
       // @ts-ignore
       this.data = data[0];
       this.buyMessage = `$ ${this.data.prices[0].price}`;
+      this.comic = {
+        title: this.data.title || '',
+        description: this.data.description || null,
+        image: `${this.data.images[0].path}.${this.data.images[0].extension}` || '',
+      }
     })
   }
 
