@@ -12,7 +12,7 @@
 
   <div class="columns-1 columns-xs gap-y-40 gap-x-12">
     <div *ngFor="let comic of comics" class="mt-4 max-w-lg">
-      <a routerLink="/detail/{{comic.id}}">
+      <a routerLink="/comic/{{comic.id}}">
         <mat-card>
           <mat-card-header>
             <mat-card-title class="font-bold text-slate-50">{{comic.title}}</mat-card-title>

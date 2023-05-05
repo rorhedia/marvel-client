@@ -12,7 +12,7 @@
 
   <div class="columns-1 columns-xs gap-y-40 gap-x-12">
     <div *ngFor="let personaje of personajes" class="mt-4 max-w-lg">
-      <a routerLink="/{{personaje.id}}">
+      <a routerLink="/personaje/{{personaje.id}}">
         <mat-card>
           <mat-card-header>
             <mat-card-title class="font-bold text-slate-50">{{personaje.name}}</mat-card-title>
